@@ -5,11 +5,11 @@ import java.util.Scanner;
 import com.greatlearning.sort.MergeSort;
 
 public class CurrencyDenomination {
-	static int[] notesCounter;
+	static int[] Counter;
 
 	@SuppressWarnings("resource")
 	public static void main(String[] args) {
-		int finalAmount = 0;
+		int finalAmt = 0;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the size of currency denominations");
 		int size = sc.nextInt();
@@ -23,19 +23,19 @@ public class CurrencyDenomination {
 		System.out.println("Enter the amount you want to pay");
 		int amount = sc.nextInt();
 
-		finalAmount = notesCount(notes, amount);
+		finalAmt = notesCount(notes, amount);
 
-		if (finalAmount > 0) {
-			System.out.println("Exact amount cannot be given having the highest denomination");
-		} else if (finalAmount == -1) {
+		if (finalAmt > 0) {
+			System.out.println("Cannot generate amount as denomination is higher than amount to be paid");
+		} else if (finalAmt == -1) {
 			System.out.println("Invalid Amount Entered");
-		} else if (finalAmount == -2) {
+		} else if (finalAmt == -2) {
 			System.out.println("Notes of 0 denominations are invalid");
 		} else {
 			System.out.println("Your payment approach in order to give min no of notes will be");
 			for (int i = 0; i < size; i++) {
-				if (notesCounter[i] != 0)
-					System.out.println(notes[i] + ":" + notesCounter[i]);
+				if (Counter[i] != 0)
+					System.out.println(notes[i] + ":" + Counter[i]);
 			}
 		}
 
@@ -44,12 +44,12 @@ public class CurrencyDenomination {
 	public static int notesCount(int notes[], int amount) {
 		if (amount == 0)
 			return -1;
-		notesCounter = new int[notes.length];
+		Counter = new int[notes.length];
 		try {
 			for (int i = 0; i < notes.length; i++) {
 				if (amount >= notes[i]) {
-					notesCounter[i] = amount / notes[i];
-					amount = amount - (notesCounter[i] * notes[i]);
+					Counter[i] = amount / notes[i];
+					amount = amount - (Counter[i] * notes[i]);
 				}
 			}
 
