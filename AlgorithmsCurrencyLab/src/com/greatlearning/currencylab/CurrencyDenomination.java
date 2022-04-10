@@ -2,7 +2,7 @@ package com.greatlearning.currencylab;
 
 import java.util.Scanner;
 
-import com.greatlearning.currencylab.sort.MergeSort;
+import com.greatlearning.sort.MergeSort;
 
 public class CurrencyDenomination {
 	static int[] notesCounter;
